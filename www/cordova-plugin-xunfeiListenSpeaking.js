@@ -17,7 +17,7 @@ var xunfeiListenSpeaking = {
         exec(null, null, 'XunfeiListenSpeaking', 'pauseSpeaking', []);
     },
 
-    resumeSpeaking: function() {
+    resumeSpeaking: function(success,error,speakMessage) {
         exec(success, null, 'XunfeiListenSpeaking', 'resumeSpeaking', []);
     }
 
