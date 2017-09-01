@@ -49,6 +49,13 @@ public class XunfeiListenSpeaking extends CordovaPlugin{
         SpeechUtility.createUtility(context, SpeechConstant.APPID +"="+context.getString(getId("app_id","string")));
     }
 
+      @Override
+        public void onDestroy() {
+        	// TODO Auto-generated method stub
+        	super.onDestroy();
+        	stopSpeak();
+        }
+
     private int getId(String idName,String type){
         return context.getResources().getIdentifier(idName, type,context.getPackageName());
     }
