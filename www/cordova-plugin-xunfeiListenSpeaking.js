@@ -18,7 +18,7 @@ var xunfeiListenSpeaking = {
     },
 
     resumeSpeaking: function() {
-        exec(null, null, 'XunfeiListenSpeaking', 'resumeSpeaking', []);
+        exec(success, null, 'XunfeiListenSpeaking', 'resumeSpeaking', []);
     }
 
 };
