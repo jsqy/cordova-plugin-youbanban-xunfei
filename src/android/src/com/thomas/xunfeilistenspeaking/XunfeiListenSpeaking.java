@@ -365,7 +365,7 @@ public class XunfeiListenSpeaking extends CordovaPlugin{
         //播放进度回调
         //percent为播放进度0~100,beginPos为播放音频在文本中开始位置，endPos表示播放音频在文本中结束位置.
         public void onSpeakProgress(int percent, int beginPos, int endPos) {
-            PluginResult pluginResult = new PluginResult(PluginResult.Status.OK,"返回内容"+percent);
+            PluginResult pluginResult = new PluginResult(PluginResult.Status.OK,percent+"");
             pluginResult.setKeepCallback(true);
             callbackContext.sendPluginResult(pluginResult);
         }
