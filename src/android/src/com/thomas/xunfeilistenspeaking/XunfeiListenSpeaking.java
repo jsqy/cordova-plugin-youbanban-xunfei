@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.iflytek.cloud.*;
 import com.iflytek.sunflower.FlowerCollector;
 import org.apache.cordova.CallbackContext;
+import org.apache.cordova.PluginResult;
 import org.apache.cordova.CordovaPlugin;
 import org.json.JSONArray;
 import org.json.JSONException;
