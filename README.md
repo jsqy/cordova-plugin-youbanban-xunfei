@@ -7,7 +7,7 @@
 
 ## Installation
 
-    cordova plugin add https://github.com/Edc-zhang/cordova-plugin-IFlyspeech
+    cordova plugin add https://github.com/jsqy/cordova-plugin-youbanban-xunfei.git
 
 
 ## js
