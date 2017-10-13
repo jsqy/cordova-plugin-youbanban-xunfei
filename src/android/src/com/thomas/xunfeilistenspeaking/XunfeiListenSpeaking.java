@@ -106,7 +106,8 @@ public class XunfeiListenSpeaking extends CordovaPlugin{
         if (action.equals("startSpeak")){
             mToast = Toast.makeText(context, "", Toast.LENGTH_SHORT);
             String speakMessage = args.getString(0).trim();
-            startSpeak(speakMessage);
+            JSONObject parameter = args.optJSONObject(1);
+            startSpeak(speakMessage, parameter);
             return true;
         }
         //停止说话
@@ -321,8 +322,9 @@ public class XunfeiListenSpeaking extends CordovaPlugin{
         }
     }
 
-    private void startSpeak(String speakMessage) {
-        setSpeakParameter();
+    private void startSpeak(String speakMessage, JSONObject parameter) {
+        if(parameter != null)
+            setSpeakParameter(parameter);
         if (mTts.isSpeaking()){
             mTts.stopSpeaking();
         }
@@ -330,12 +332,11 @@ public class XunfeiListenSpeaking extends CordovaPlugin{
 
     }
 
-    private void setSpeakParameter(){
+    private void setSpeakParameter(JSONObject parameter){
         if (mTts==null){
             //1.创建SpeechSynthesizer对象, 第二个参数：本地合成时传InitListener
             mTts = SpeechSynthesizer.createSynthesizer(context, null);
             //2.合成参数设置，详见《科大讯飞MSC API手册(Android)》SpeechSynthesizer 类
-            mTts.setParameter(SpeechConstant.VOICE_NAME, "xiaoyan");//设置发音人
             mTts.setParameter(SpeechConstant.SPEED, "50");//设置语速
             mTts.setParameter(SpeechConstant.VOLUME, "80");//设置音量，范围0~100
             mTts.setParameter(SpeechConstant.ENGINE_TYPE, SpeechConstant.TYPE_CLOUD); //设置云端
@@ -346,6 +347,7 @@ public class XunfeiListenSpeaking extends CordovaPlugin{
             //3.开始合成
             // mTts.startSpeaking("科大讯飞，让世界聆听我们的声音", mSynListener);
         }
+        mTts.setParameter(SpeechConstant.VOICE_NAME, parameter.optString("VOICE_NAME"));//设置发音人
     }
     //合成监听器
     private SynthesizerListener mSynListener = new SynthesizerListener(){
